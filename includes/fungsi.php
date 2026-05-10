@@ -47,3 +47,19 @@ function getParam($nama, $default = '')
     return bersihkan($_GET[$nama] ?? $default);
 }
 
+function dbRun($conn, $sql, $types = '', $params = [])
+{
+    $stmt = mysqli_prepare($conn, $sql);
+    if (!$stmt) die('Query gagal disiapkan: ' . e(mysqli_error($conn)));
+    if ($types !== '' && !empty($params)) {
+        mysqli_stmt_bind_param($stmt, $types, ...$params);
+    }
+    if (!mysqli_stmt_execute($stmt)) die('Query gagal dijalankan.');
+    return $stmt;
+}
+
+function csrfToken()
+{
+    if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
+    return $_SESSION['csrf'];
+}
