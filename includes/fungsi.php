@@ -96,3 +96,153 @@ function cekCsrf()
         die('Token keamanan tidak valid. Silakan ulangi dari halaman sebelumnya.');
     }
 }
+
+function hitungUmur($tanggal_lahir)
+{
+    if (!$tanggal_lahir) {
+        return 0;
+    }
+
+    return (new DateTime($tanggal_lahir))->diff(new DateTime())->y;
+}
+
+function donorTerakhir($conn, $user_id)
+{
+    return dbOne(
+        $conn,
+        'SELECT tanggal FROM riwayat_donor WHERE user_id = ? ORDER BY tanggal DESC LIMIT 1',
+        'i',
+        [$user_id]
+    );
+}
+
+function cekInterval($conn, $user_id)
+{
+    $row = donorTerakhir($conn, $user_id);
+
+    if (!$row) {
+        return true;
+    }
+
+    // Rumus sederhana: jarak donor berikutnya minimal 90 hari dari donor terakhir.
+    return (new DateTime($row['tanggal']))->diff(new DateTime())->days >= JEDA_DONOR_HARI;
+}
+
+function sisaHariDonor($conn, $user_id)
+{
+    $row = donorTerakhir($conn, $user_id);
+
+    if (!$row) {
+        return 0;
+    }
+
+    // Rumus: tanggal donor terakhir + 90 hari - hari ini.
+    $tanggal_boleh = strtotime($row['tanggal'] . ' +' . JEDA_DONOR_HARI . ' days');
+    return max(0, (int) ceil(($tanggal_boleh - time()) / 86400));
+}
+
+function jadwalAktif($conn, $user_id)
+{
+    // Aktif berarti masih menunggu, atau sudah disetujui tetapi belum dicatat sebagai riwayat donor.
+    return dbOne(
+        $conn,
+        "SELECT j.*
+         FROM jadwal_donor j
+         WHERE j.user_id = ?
+           AND (
+                j.status = 'menunggu'
+                OR (
+                    j.status = 'disetujui'
+                    AND NOT EXISTS (
+                        SELECT 1 FROM riwayat_donor r WHERE r.jadwal_id = j.id
+                    )
+                )
+           )
+         ORDER BY j.created_at DESC
+         LIMIT 1",
+        'i',
+        [$user_id]
+    );
+}
+
+function adaJadwalAktif($conn, $user_id)
+{
+    return (bool) jadwalAktif($conn, $user_id);
+}
+
+function adaJadwalMenunggu($conn, $user_id)
+{
+    // Cek apakah pendonor masih punya jadwal yang menunggu konfirmasi.
+    $row = dbOne(
+        $conn,
+        "SELECT COUNT(*) n FROM jadwal_donor WHERE user_id = ? AND status = 'menunggu'",
+        'i',
+        [$user_id]
+    );
+
+    return (int) ($row['n'] ?? 0) > 0;
+}
+
+function waktuKuesionerBerakhir($user_id)
+{
+    return (int) ($_SESSION['kuesioner_lulus_until'][$user_id] ?? 0);
+}
+
+function kuesionerMasihBerlaku($user_id)
+{
+    $berakhir = waktuKuesionerBerakhir($user_id);
+
+    if ($berakhir > time()) {
+        return true;
+    }
+
+    hapusKuesionerLulus($user_id);
+    return false;
+}
+
+function setKuesionerLulus($user_id)
+{
+    // Kuesioner lulus disimpan sementara di session selama 24 jam.
+    $_SESSION['kuesioner_lulus_until'][$user_id] = time() + MASA_BERLAKU_KUESIONER;
+}
+
+function hapusKuesionerLulus($user_id)
+{
+    unset($_SESSION['kuesioner_lulus_until'][$user_id]);
+    unset($_SESSION['lulus_kuesioner']); // membersihkan session lama dari versi sebelumnya
+}
+
+function statusStok($jumlah, $batas)
+{
+    if ($jumlah <= $batas) {
+        return ['label' => 'Kritis', 'kelas' => 'danger', 'icon' => 'bi-exclamation-triangle-fill'];
+    }
+
+    if ($jumlah <= $batas * 2) {
+        return ['label' => 'Sedang', 'kelas' => 'warning', 'icon' => 'bi-exclamation-circle-fill'];
+    }
+
+    return ['label' => 'Aman', 'kelas' => 'success', 'icon' => 'bi-check-circle-fill'];
+}
+
+function badgeStatus($status)
+{
+    if ($status === 'selesai') {
+        return 'text-bg-primary';
+    }
+
+    if ($status === 'disetujui') {
+        return 'text-bg-success';
+    }
+
+    if ($status === 'ditolak') {
+        return 'text-bg-danger';
+    }
+
+    return 'text-bg-warning';
+}
+
+function inisial($nama)
+{
+    return strtoupper(substr((string) $nama, 0, 2));
+}
