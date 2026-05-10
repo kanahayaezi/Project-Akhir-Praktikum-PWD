@@ -58,6 +58,26 @@ function dbRun($conn, $sql, $types = '', $params = [])
     return $stmt;
 }
 
+function dbSelect($conn, $sql, $types = '', $params = [])
+{
+    $stmt = dbRun($conn, $sql, $types, $params);
+    return mysqli_stmt_get_result($stmt);
+}
+
+function dbOne($conn, $sql, $types = '', $params = [])
+{
+    $result = dbSelect($conn, $sql, $types, $params);
+    return mysqli_fetch_assoc($result) ?: null;
+}
+
+function dbAll($conn, $sql, $types = '', $params = [])
+{
+    $result = dbSelect($conn, $sql, $types, $params);
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) $rows[] = $row;
+    return $rows;
+}
+
 function csrfToken()
 {
     if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
