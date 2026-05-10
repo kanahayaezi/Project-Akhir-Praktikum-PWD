@@ -80,6 +80,19 @@ function dbAll($conn, $sql, $types = '', $params = [])
 
 function csrfToken()
 {
-    if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
-    return $_SESSION['csrf'];
+    if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    return $_SESSION['csrf_token'];
+}
+
+function csrfInput()
+{
+    return '<input type="hidden" name="csrf_token" value="' . e(csrfToken()) . '">';
+}
+
+function cekCsrf()
+{
+    $token = $_POST['csrf_token'] ?? '';
+    if (!$token || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+        die('Token keamanan tidak valid. Silakan ulangi dari halaman sebelumnya.');
+    }
 }
