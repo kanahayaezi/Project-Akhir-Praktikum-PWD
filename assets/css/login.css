@@ -1,0 +1,30 @@
+/* login.css — khusus halaman login.php */
+.auth-page {
+    min-height: 100vh;
+    background: #f6f7fb;
+}
+
+.auth-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    padding: 24px;
+}
+
+.auth-card {
+    max-width: 430px;
+    width: 100%;
+}
+
+.auth-icon {
+    align-items: center;
+    background: var(--red-soft);
+    border-radius: 18px;
+    color: var(--red);
+    display: flex;
+    font-size: 1.6rem;
+    height: 58px;
+    justify-content: center;
+    width: 58px;
+}
