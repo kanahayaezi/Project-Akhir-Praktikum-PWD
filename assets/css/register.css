@@ -1,0 +1,14 @@
+.register-wrapper {
+    max-width: 850px;
+}
+
+.form-section-title {
+    border-bottom: 1px solid #eee;
+    color: var(--red);
+    font-size: .85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
