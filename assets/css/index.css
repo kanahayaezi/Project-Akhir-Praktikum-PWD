@@ -1,0 +1,393 @@
+.home-navbar {
+    background: rgba(255,255,255,.97);
+    border-bottom: 1px solid rgba(0,0,0,.07);
+}
+
+.home-navbar .nav-link {
+    font-weight: 500;
+    color: #444;
+    font-size: .9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: .2s;
+}
+
+.home-navbar .nav-link:hover {
+    background: var(--red-soft);
+    color: var(--red);
+}
+
+.hero-section {
+    position: relative;
+    height: 580px;
+    overflow: hidden;
+}
+
+.hero-section .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        100deg,
+        rgba(26,26,46,.92),
+        rgba(26,26,46,.6) 50%,
+        transparent
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 580px;
+    padding: 0 16px;
+}
+
+.hero-eyebrow {
+    background: rgba(192,57,43,.25);
+    border: 1px solid rgba(192,57,43,.5);
+    color: #ff9a8b;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 14px;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.hero-title span {
+    color: #ff9a8b;
+}
+
+.hero-sub {
+    color: rgba(255,255,255,.8);
+    font-size: .95rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.stats-bar .stat-num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.stats-bar .stat-label {
+    font-size: .68rem;
+    color: rgba(255,255,255,.45);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+
+/* Label & Judul Section */
+
+.section-label {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.section-title-lg {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+/* Kartu Stok Darah */
+
+.stok-section {
+    background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #f8f7f5 100%
+    );
+}
+
+.stok-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(31, 41, 55, .06);
+    overflow: hidden;
+    transition: .2s;
+}
+
+.stok-card:hover {
+    box-shadow: 0 12px 28px rgba(31, 41, 55, .10);
+    transform: translateY(-3px);
+}
+
+.stok-home-card {
+    padding: 20px;
+}
+
+.stok-gol {
+    color: #1f2937;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+
+.stok-num {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stok-progress {
+    background: #edf0f3;
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.stok-progress-bar {
+    border-radius: 999px;
+    height: 100%;
+}
+
+
+/* Section Manfaat */
+
+.manfaat-section {
+    background: var(--dark);
+}
+
+.manfaat-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: .2s;
+}
+
+.manfaat-card:hover {
+    background: rgba(255,255,255,.1);
+}
+
+.manfaat-card .icon-circle {
+    width: 48px;
+    height: 48px;
+    background: rgba(192,57,43,.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.manfaat-card .icon-circle i {
+    color: #ff9a8b;
+    font-size: 1.3rem;
+}
+
+.manfaat-card h6 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.manfaat-card li {
+    color: rgba(255,255,255,.65);
+    font-size: .85rem;
+    padding: 3px 0;
+}
+
+
+/* Daftar Syarat */
+
+.syarat-item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0ede8;
+    font-size: .88rem;
+    color: #444;
+}
+
+.syarat-item-row:last-child {
+    border-bottom: none;
+}
+
+.syarat-bullet {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    background: var(--red-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.syarat-bullet i {
+    color: var(--red);
+    font-size: .7rem;
+}
+
+
+/* Langkah Donor */
+
+.langkah-no {
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    border: 2px solid #F8F7F5;
+}
+
+.langkah-icon {
+    width: 44px;
+    height: 44px;
+    background: #FDECEA;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.map-embed-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 3px solid #e0ddd6;
+    height: 260px;
+}
+
+.map-embed-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.lokasi-info-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #ede9e0;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.lokasi-icon-box {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--red-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lokasi-icon-box i {
+    color: var(--red);
+}
+
+.sosmed-icon {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid #e5e2dc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .2s;
+}
+
+.sosmed-icon:hover {
+    transform: translateY(-3px);
+}
+
+.sosmed-icon.wa {
+    color: #25D366;
+}
+
+.sosmed-icon.ig {
+    color: #E1306C;
+}
+
+.sosmed-icon.fb {
+    color: #1877F2;
+}
+
+.sosmed-icon.yt {
+    color: #FF0000;
+}
+
+.sosmed-icon.tw {
+    color: #000;
+}
+
+.sosmed-icon.em {
+    color: var(--red);
+}
+
+.cta-section {
+    background: linear-gradient(
+        135deg,
+        var(--red-dark),
+        var(--red)
+    );
+    padding: 70px 0;
+}
+
+.site-footer {
+    background: var(--dark);
+}
+
+.site-footer .footer-logo {
+    height: 28px;
+    filter: brightness(0) invert(1);
+    opacity: .6;
+}
+
+.site-footer a {
+    color: rgba(255,255,255,.4);
+    font-size: .82rem;
+    transition: .2s;
+}
+
+.site-footer a:hover {
+    color: #fff;
+}
