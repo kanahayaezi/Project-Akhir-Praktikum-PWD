@@ -161,3 +161,201 @@ $langkah = [
             </div>
         </div>
     </section>
+
+    <section class="manfaat-section py-5" id="manfaat">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="section-label" style="color:#ff9a8b">Mengapa donor?</span>
+                <h2 class="section-title-lg" style="color:#fff">Manfaat Donor Darah</h2>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="manfaat-card">
+                        <div class="icon-circle"><i class="bi bi-activity"></i></div>
+                        <h6>Kesehatan Jantung</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Menurunkan zat besi berlebih</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Mengurangi risiko penyakit jantung</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Memperlancar sirkulasi darah</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="manfaat-card">
+                        <div class="icon-circle"><i class="bi bi-clipboard2-pulse-fill"></i></div>
+                        <h6>Cek Kesehatan Gratis</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Cek HB & tekanan darah gratis</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Deteksi dini penyakit menular</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Pemantauan kesehatan rutin</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="manfaat-card">
+                        <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
+                        <h6>Sosial & Psikologis</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Menyelamatkan hingga 3 nyawa</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Meningkatkan rasa empati</li>
+                            <li><i class="bi bi-check2 text-pmi me-2"></i>Mendapat snack & sertifikat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="syarat">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-5">
+                    <span class="section-label">Sebelum donor</span>
+                    <h2 class="section-title-lg mb-3">Syarat Donor Darah</h2>
+                    <p class="text-muted">Pastikan Anda memenuhi syarat berikut sebelum datang ke PMI.</p>
+                    <a href="register.php" class="btn btn-pmi rounded-pill px-4 mt-2">
+                        <i class="bi bi-person-plus-fill"></i> Daftar Sekarang
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="card border p-3 h-100">
+                                <h6 class="fw-bold small mb-3 text-pmi"><i class="bi bi-person-check-fill"></i> Syarat Umum</h6>
+                                <?php foreach (['Usia 17–60 tahun', 'Berat badan min. 45 kg', 'Tekanan darah 100–160/70–100', 'Kadar HB 12,5–17 g/dL', 'Suhu tubuh 36,6–37,5 °C'] as $s): ?>
+                                    <div class="syarat-item-row">
+                                        <div class="syarat-bullet"><i class="bi bi-check2"></i></div><?= $s ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card border p-3 h-100">
+                                <h6 class="fw-bold small mb-3 text-pmi"><i class="bi bi-calendar-check-fill"></i> Ketentuan Waktu</h6>
+                                <?php foreach (['Interval min. 3 bulan', 'Tidur cukup min. 5 jam', 'Tidak konsumsi antibiotik', 'Tidak hamil/menyusui', 'Sehat, tidak demam'] as $s): ?>
+                                    <div class="syarat-item-row">
+                                        <div class="syarat-bullet"><i class="bi bi-check2"></i></div><?= $s ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Langkah-langkah donor — pakai perulangan array -->
+    <section class="py-5" id="langkah" style="background:#F8F7F5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label">Prosedur</span>
+                <h2 class="section-title-lg">Langkah-Langkah Donor Darah</h2>
+                <p class="text-muted small">Hanya butuh sekitar 30–45 menit</p>
+            </div>
+            <div class="row g-4">
+                <?php foreach ($langkah as $i => $l): ?>
+                    <div class="col-md-4">
+                        <div class="h-100 p-4 rounded-4 border bg-white" style="position:relative">
+                            <!-- Nomor langkah -->
+                            <div class="langkah-no"><?= $i + 1 ?></div>
+                            <div class="langkah-icon mb-3">
+                                <i class="bi <?= $l['icon'] ?> text-pmi"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1" style="font-family:var(--font-head)"><?= $l['judul'] ?></h6>
+                            <p class="text-muted small mb-0"><?= $l['isi'] ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="mt-5 p-4 rounded-4 d-flex align-items-center justify-content-between flex-wrap gap-3" style="background:var(--dark)">
+                <div>
+                    <div class="fw-bold text-white">Siap memulai?</div>
+                    <small style="color:rgba(255,255,255,.45)">Pendaftaran hanya butuh beberapa menit.</small>
+                </div>
+                <a href="register.php" class="btn btn-pmi rounded-pill px-4 fw-bold">
+                    <i class="bi bi-person-plus-fill"></i> Daftar Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokasi dengan peta embed -->
+    <section class="py-5" id="lokasi">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="section-label">Temukan kami</span>
+                <h2 class="section-title-lg">Lokasi PMI Kabupaten Sleman</h2>
+            </div>
+            <div class="row g-4 align-items-start">
+                <div class="col-md-7">
+                    <div class="map-embed-wrap">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.1234!2d110.35!3d-7.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5a5e5a5e5a5e%3A0x5a5e5a5e5a5e5a5e!2sPMI%20Kabupaten%20Sleman!5e0!3m2!1sid!2sid!4v1234567890" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <a href="https://maps.google.com/?q=PMI+Kabupaten+Sleman" target="_blank" class="btn btn-outline-secondary btn-sm rounded-pill mt-2">
+                        <i class="bi bi-box-arrow-up-right"></i> Buka Google Maps
+                    </a>
+                </div>
+                <div class="col-md-5 d-flex flex-column gap-2">
+                    <div class="lokasi-info-card">
+                        <div class="lokasi-icon-box"><i class="bi bi-geo-alt-fill"></i></div>
+                        <div>
+                            <div class="fw-semibold small mb-1">Alamat</div>
+                            <div class="text-muted small">Jl. Magelang No.6, Mlati, Sleman, DIY 55284</div>
+                        </div>
+                    </div>
+                    <div class="lokasi-info-card">
+                        <div class="lokasi-icon-box"><i class="bi bi-clock-fill"></i></div>
+                        <div>
+                            <div class="fw-semibold small mb-1">Jam Operasional</div>
+                            <div class="text-muted small">Sen–Jum: 08.00–15.00 · Sab: 08.00–12.00 · Min: Tutup</div>
+                        </div>
+                    </div>
+                    <div class="lokasi-info-card">
+                        <div class="lokasi-icon-box"><i class="bi bi-telephone-fill"></i></div>
+                        <div>
+                            <div class="fw-semibold small mb-1">Telepon & WhatsApp</div>
+                            <div class="text-muted small">(0274) 868-281 · WA: 0812-2734-5678</div>
+                        </div>
+                    </div>
+                    <div class="lokasi-info-card flex-column align-items-start">
+                        <div class="fw-semibold small mb-2">Ikuti PMI Sleman</div>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="https://wa.me/628122734567" target="_blank" class="sosmed-icon wa"><i class="bi bi-whatsapp"></i></a>
+                            <a href="#" class="sosmed-icon ig"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="sosmed-icon fb"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="sosmed-icon yt"><i class="bi bi-youtube"></i></a>
+                            <a href="#" class="sosmed-icon tw"><i class="bi bi-twitter-x"></i></a>
+                            <a href="mailto:pmi.sleman@pmi.or.id" class="sosmed-icon em"><i class="bi bi-envelope-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA daftar -->
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2 style="color:#fff;font-size:2rem;margin-bottom:8px">Siap Menjadi Pendonor?</h2>
+            <p style="color:rgba(255,255,255,.75);margin-bottom:28px">Daftarkan diri sekarang di PMI Kabupaten Sleman</p>
+            <a href="register.php" class="btn btn-light fw-bold rounded-pill px-5 me-2">
+                <i class="bi bi-person-plus-fill text-danger"></i> Daftar Sekarang
+            </a>
+            <a href="tel:02748682811" class="btn btn-outline-light rounded-pill px-4">
+                <i class="bi bi-telephone-fill"></i> Hubungi Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer py-4">
+        <div class="container d-flex justify-content-center align-items-center flex-wrap gap-2">
+            <small style="color:rgba(255,255,255,.3)">© <?= date('Y') ?> PMI Kabupaten Sleman</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
