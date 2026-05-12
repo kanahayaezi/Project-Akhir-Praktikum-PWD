@@ -84,3 +84,80 @@ $langkah = [
             </div>
         </div>
     </section>
+
+    <div class="stats-bar">
+        <div class="container">
+            <div class="row text-center py-3">
+                <div class="col border-end border-white border-opacity-10">
+                    <div class="stat-num"><?= number_format($total_donor) ?></div>
+                    <div class="stat-label">Pendonor terdaftar</div>
+                </div>
+                <div class="col border-end border-white border-opacity-10">
+                    <div class="stat-num"><?= number_format($donor_thn) ?></div>
+                    <div class="stat-label">Donor tahun ini</div>
+                </div>
+                <div class="col border-end border-white border-opacity-10">
+                    <div class="stat-num"><?= number_format($total_rw) ?></div>
+                    <div class="stat-label">Total donasi</div>
+                </div>
+                <div class="col">
+                    <div class="stat-num">±<?= number_format($total_rw * 3) ?></div>
+                    <div class="stat-label">Nyawa terbantu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="stok-section py-5" id="stok">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-4">
+                <div>
+                    <span class="section-label">Real-time</span>
+                    <h2 class="section-title-lg mb-1">Stok Darah Saat Ini</h2>
+                    <p class="text-muted small mb-0">Diperbarui berkala oleh petugas PMI Sleman.</p>
+                </div>
+                <a href="login.php" class="btn btn-outline-pmi btn-sm rounded-pill px-3">
+                    <i class="bi bi-calendar-plus"></i> Daftar donor
+                </a>
+            </div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+                <?php foreach ($stok as $s): ?>
+                    <?php
+                    $st = statusStok((int) $s['jumlah_kantong'], (int) $s['batas_kritis']);
+
+                    // Rumus progress: stok sekarang / target tampilan x 100%.
+                    // Target tampilan dibuat 4x batas kritis supaya bar tidak cepat penuh.
+                    $percent = min(100, (int) round($s['jumlah_kantong'] / max(1, $s['batas_kritis'] * 4) * 100));
+                    ?>
+                    <div class="col">
+                        <div class="stok-card stok-home-card h-100">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <div class="stok-gol"><?= e($s['golongan_darah'] . $s['rhesus']) ?></div>
+                                    <small class="text-muted">Golongan darah</small>
+                                </div>
+                                <span class="badge rounded-pill text-bg-<?= e($st['kelas']) ?>">
+                                    <i class="bi <?= e($st['icon']) ?>"></i> <?= e($st['label']) ?>
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-end gap-2 mb-2">
+                                <div class="stok-num text-<?= e($st['kelas']) ?>"><?= e($s['jumlah_kantong']) ?></div>
+                                <span class="text-muted mb-2">kantong</span>
+                            </div>
+
+                            <div class="stok-progress mb-2">
+                                <div class="stok-progress-bar bg-<?= e($st['kelas']) ?>" style="width: <?= e($percent) ?>%"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between small text-muted">
+                                <span>Stok tersedia</span>
+                                <span>Batas <?= e($s['batas_kritis']) ?></span>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
