@@ -1,0 +1,36 @@
+.questionnaire-wrapper {
+    max-width: 760px;
+}
+
+.question-item {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+
+.question-number {
+    color: #999;
+    font-weight: 800;
+    margin-right: 6px;
+}
+
+.blocked-icon {
+    align-items: center;
+    background: var(--red-soft);
+    border-radius: 50%;
+    color: var(--red);
+    display: flex;
+    font-size: 2rem;
+    height: 70px;
+    justify-content: center;
+    width: 70px;
+}
+
+@media (max-width: 576px) {
+    .question-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
