@@ -32,6 +32,7 @@ $jadwal = dbSelect(
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,6 +43,7 @@ $jadwal = dbSelect(
     <link rel="stylesheet" href="../assets/css/donor.css">
     <link rel="stylesheet" href="../assets/css/donor/dashboard.css">
 </head>
+
 <body class="donor-page">
     <?php include '../includes/navbar_donor.php'; ?>
 
@@ -195,4 +197,5 @@ $jadwal = dbSelect(
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
