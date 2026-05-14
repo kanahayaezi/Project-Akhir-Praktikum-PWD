@@ -1,0 +1,83 @@
+.topbar-summary {
+    display: flex;
+    gap: 24px;
+    text-align: center;
+}
+
+.topbar-summary strong {
+    display: block;
+    font-size: 1.3rem;
+}
+
+.topbar-summary small {
+    color: #777;
+    font-size: .72rem;
+    text-transform: uppercase;
+}
+
+.stock-note {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eceff3;
+    border-radius: 14px;
+    color: #5b6673;
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+}
+
+.stock-note i {
+    color: var(--red);
+}
+
+.stok-admin-card {
+    position: relative;
+    transition: .2s;
+}
+
+.stok-admin-card:hover {
+    box-shadow: 0 12px 28px rgba(31, 41, 55, .10);
+    transform: translateY(-3px);
+}
+
+.stok-card-accent {
+    height: 5px;
+}
+
+.stok-blood-code {
+    color: #1f2937;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    line-height: 1;
+}
+
+.stok-admin-num {
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stok-mini-info {
+    background: #f8f9fb;
+    border-radius: 12px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 12px;
+}
+
+.stok-mini-info small {
+    color: #6c757d;
+    display: block;
+    font-size: .72rem;
+}
+
+.stok-mini-info strong {
+    color: #1f2937;
+    font-size: .95rem;
+}
+
+.stok-admin-card .form-control {
+    border-radius: 10px;
+}
