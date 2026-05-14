@@ -1,0 +1,40 @@
+.chart-bars {
+    align-items: end;
+    display: flex;
+    gap: 12px;
+    height: 180px;
+}
+
+.chart-item {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    justify-content: end;
+}
+
+.chart-bar {
+    background: var(--red);
+    border-radius: 8px 8px 0 0;
+    min-height: 8px;
+    width: 100%;
+}
+
+.chart-item small,
+.chart-item span {
+    color: #777;
+    font-size: .75rem;
+}
+
+.stock-row {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.stock-row strong {
+    min-width: 42px;
+}
