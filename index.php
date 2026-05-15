@@ -318,17 +318,17 @@ $langkah = [
                         <div class="lokasi-icon-box"><i class="bi bi-telephone-fill"></i></div>
                         <div>
                             <div class="fw-semibold small mb-1">Telepon & WhatsApp</div>
-                            <div class="text-muted small">(0274) 868-281 · WA: 0812-2734-5678</div>
+                            <div class="text-muted small">(0274) 869909 · WA: 0838-4622-6162-2734-5678</div>
                         </div>
                     </div>
                     <div class="lokasi-info-card flex-column align-items-start">
                         <div class="fw-semibold small mb-2">Ikuti PMI Sleman</div>
                         <div class="d-flex gap-2 flex-wrap">
-                            <a href="https://wa.me/628122734567" target="_blank" class="sosmed-icon wa"><i class="bi bi-whatsapp"></i></a>
-                            <a href="#" class="sosmed-icon ig"><i class="bi bi-instagram"></i></a>
-                            <a href="#" class="sosmed-icon fb"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="sosmed-icon yt"><i class="bi bi-youtube"></i></a>
-                            <a href="#" class="sosmed-icon tw"><i class="bi bi-twitter-x"></i></a>
+                            <a href="https://wa.me/6283846226162" target="_blank" class="sosmed-icon wa"><i class="bi bi-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/pmikabsleman?igsh=aXIzNHI5bjlnandk" class="sosmed-icon ig"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/posko.pmisleman.3" class="sosmed-icon fb"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.youtube.com/@pmikabsleman" class="sosmed-icon yt"><i class="bi bi-youtube"></i></a>
+                            <a href="https://x.com/pmi_sleman" class="sosmed-icon tw"><i class="bi bi-twitter-x"></i></a>
                             <a href="mailto:pmi.sleman@pmi.or.id" class="sosmed-icon em"><i class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
