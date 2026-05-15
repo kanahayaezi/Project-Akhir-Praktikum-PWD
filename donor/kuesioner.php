@@ -8,13 +8,13 @@ cekDonor();
 $uid = (int) $_SESSION['user_id'];
 $user = dbOne($conn, 'SELECT * FROM users WHERE id = ? LIMIT 1', 'i', [$uid]);
 
-// Kalau masih punya jadwal aktif, pendonor tidak perlu isi kuesioner lagi.
+// kalau masih punya jadwal aktif, pendonor tidak perlu isi kuesioner lagi
 if (adaJadwalAktif($conn, $uid) || !cekInterval($conn, $uid)) {
     header('Location: dashboard.php');
     exit;
 }
 
-// Kalau kuesioner yang lama masih berlaku, langsung lanjut memilih jadwal.
+// kalau kuesioner yang lama masih berlaku, langsung lanjut memilih jadwal
 if (kuesionerMasihBerlaku($uid)) {
     header('Location: daftar.php');
     exit;
@@ -59,9 +59,9 @@ if (!$diblokir && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,6 +72,7 @@ if (!$diblokir && $_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/donor.css">
     <link rel="stylesheet" href="../assets/css/donor/kuesioner.css">
 </head>
+
 <body class="donor-page">
     <?php include '../includes/navbar_donor.php'; ?>
 
@@ -142,4 +143,5 @@ if (!$diblokir && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

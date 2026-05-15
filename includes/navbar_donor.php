@@ -1,5 +1,4 @@
-<?php
-$halaman = basename($_SERVER['PHP_SELF']); ?>
+<?php $halaman = basename($_SERVER['PHP_SELF']); ?>
 <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm sticky-top donor-navbar">
     <div class="container-lg">
         <a class="navbar-brand fw-bold text-pmi" href="../index.php">PMI Sleman</a>

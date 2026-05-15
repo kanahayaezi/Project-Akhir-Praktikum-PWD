@@ -14,6 +14,7 @@ function cekLogin()
 function cekAdmin()
 {
     cekLogin();
+
     if (($_SESSION['role'] ?? '') !== 'admin') {
         header('Location: ../login.php');
         exit;
@@ -23,6 +24,7 @@ function cekAdmin()
 function cekDonor()
 {
     cekLogin();
+
     if (($_SESSION['role'] ?? '') !== 'donor') {
         header('Location: ../login.php');
         exit;

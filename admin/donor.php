@@ -114,6 +114,7 @@ $counts = [
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,6 +125,7 @@ $counts = [
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/admin/donor.css">
 </head>
+
 <body>
     <div class="admin-wrapper">
         <?php include '../includes/navbar_admin.php'; ?>
@@ -185,7 +187,9 @@ $counts = [
                             </thead>
                             <tbody>
                                 <?php if (mysqli_num_rows($data) === 0): ?>
-                                    <tr><td colspan="6" class="text-center text-muted py-4">Tidak ada data.</td></tr>
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted py-4">Tidak ada data.</td>
+                                    </tr>
                                 <?php endif; ?>
 
                                 <?php while ($r = mysqli_fetch_assoc($data)): ?>
@@ -318,5 +322,5 @@ $counts = [
         });
     </script>
 </body>
-</html>
 
+</html>

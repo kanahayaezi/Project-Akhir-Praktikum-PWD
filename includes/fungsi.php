@@ -1,10 +1,10 @@
 <?php
 $golongan_darah = ['A', 'B', 'AB', 'O'];
 
-// Kuesioner hanya berlaku 24 jam setelah pendonor dinyatakan lolos.
+// kuesioner hanya berlaku 24 jam setelah pendonor dinyatakan lolos
 define('MASA_BERLAKU_KUESIONER', 24 * 60 * 60);
 
-// Pendonor boleh donor lagi setelah 90 hari dari donor terakhir.
+// pendonor boleh donor lagi setelah 90 hari dari donor terakhir
 define('JEDA_DONOR_HARI', 90);
 
 $pertanyaan = [
@@ -34,6 +34,7 @@ function e($nilai)
 
 function bersihkan($nilai)
 {
+    // Trim saja. Escape HTML dilakukan saat menampilkan dengan e().
     return trim((string) $nilai);
 }
 
@@ -50,11 +51,19 @@ function getParam($nama, $default = '')
 function dbRun($conn, $sql, $types = '', $params = [])
 {
     $stmt = mysqli_prepare($conn, $sql);
-    if (!$stmt) die('Query gagal disiapkan: ' . e(mysqli_error($conn)));
+
+    if (!$stmt) {
+        die('Query gagal disiapkan: ' . e(mysqli_error($conn)));
+    }
+
     if ($types !== '' && !empty($params)) {
         mysqli_stmt_bind_param($stmt, $types, ...$params);
     }
-    if (!mysqli_stmt_execute($stmt)) die('Query gagal dijalankan.');
+
+    if (!mysqli_stmt_execute($stmt)) {
+        die('Query gagal dijalankan: ' . e(mysqli_stmt_error($stmt)));
+    }
+
     return $stmt;
 }
 
@@ -74,7 +83,11 @@ function dbAll($conn, $sql, $types = '', $params = [])
 {
     $result = dbSelect($conn, $sql, $types, $params);
     $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) $rows[] = $row;
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
     return $rows;
 }
 
@@ -86,7 +99,10 @@ function dbExec($conn, $sql, $types = '', $params = [])
 
 function csrfToken()
 {
-    if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+
     return $_SESSION['csrf_token'];
 }
 
@@ -98,6 +114,7 @@ function csrfInput()
 function cekCsrf()
 {
     $token = $_POST['csrf_token'] ?? '';
+
     if (!$token || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
         die('Token keamanan tidak valid. Silakan ulangi dari halaman sebelumnya.');
     }
@@ -130,7 +147,7 @@ function cekInterval($conn, $user_id)
         return true;
     }
 
-    // Rumus sederhana: jarak donor berikutnya minimal 90 hari dari donor terakhir.
+    // rumus sederhana: jarak donor berikutnya minimal 90 hari dari donor terakhir
     return (new DateTime($row['tanggal']))->diff(new DateTime())->days >= JEDA_DONOR_HARI;
 }
 
@@ -142,14 +159,14 @@ function sisaHariDonor($conn, $user_id)
         return 0;
     }
 
-    // Rumus: tanggal donor terakhir + 90 hari - hari ini.
+    // rumus: tanggal donor terakhir + 90 hari - hari ini
     $tanggal_boleh = strtotime($row['tanggal'] . ' +' . JEDA_DONOR_HARI . ' days');
     return max(0, (int) ceil(($tanggal_boleh - time()) / 86400));
 }
 
 function jadwalAktif($conn, $user_id)
 {
-    // Aktif berarti masih menunggu, atau sudah disetujui tetapi belum dicatat sebagai riwayat donor.
+    // aktif berarti masih menunggu, atau sudah disetujui tetapi belum dicatat sebagai riwayat donor
     return dbOne(
         $conn,
         "SELECT j.*
@@ -178,7 +195,7 @@ function adaJadwalAktif($conn, $user_id)
 
 function adaJadwalMenunggu($conn, $user_id)
 {
-    // Cek apakah pendonor masih punya jadwal yang menunggu konfirmasi.
+    // Cek apakah pendonor masih punya jadwal yang menunggu konfirmasi
     $row = dbOne(
         $conn,
         "SELECT COUNT(*) n FROM jadwal_donor WHERE user_id = ? AND status = 'menunggu'",
@@ -208,7 +225,7 @@ function kuesionerMasihBerlaku($user_id)
 
 function setKuesionerLulus($user_id)
 {
-    // Kuesioner lulus disimpan sementara di session selama 24 jam.
+    // Kuesioner lulus disimpan sementara di session selama 24 jam
     $_SESSION['kuesioner_lulus_until'][$user_id] = time() + MASA_BERLAKU_KUESIONER;
 }
 

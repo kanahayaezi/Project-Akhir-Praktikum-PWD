@@ -45,9 +45,10 @@ foreach ($grafik as $g) {
         $max_grafik = $g['n'];
     }
 }
-
+?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +59,7 @@ foreach ($grafik as $g) {
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/admin/dashboard.css">
 </head>
+
 <body>
     <div class="admin-wrapper">
         <?php include '../includes/navbar_admin.php'; ?>
@@ -182,5 +184,5 @@ foreach ($grafik as $g) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
 
+</html>

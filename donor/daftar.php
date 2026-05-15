@@ -7,14 +7,14 @@ cekDonor();
 
 $uid = (int) $_SESSION['user_id'];
 
-// Kalau sudah ada jadwal aktif atau belum melewati 90 hari, kembali ke dashboard.
+// kalau sudah ada jadwal aktif atau belum melewati 90 hari, kembali ke dashboard
 if (adaJadwalAktif($conn, $uid) || !cekInterval($conn, $uid)) {
     hapusKuesionerLulus($uid);
     header('Location: dashboard.php');
     exit;
 }
 
-// Pendonor wajib lulus kuesioner, dan hasilnya hanya berlaku 24 jam.
+// pendonor wajib lulus kuesioner, dan hasilnya hanya berlaku 24 jam
 if (!kuesionerMasihBerlaku($uid)) {
     header('Location: kuesioner.php');
     exit;
@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/donor.css">
     <link rel="stylesheet" href="../assets/css/donor/daftar.css">
 </head>
+
 <body class="donor-page">
     <?php include '../includes/navbar_donor.php'; ?>
 
@@ -141,4 +143,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

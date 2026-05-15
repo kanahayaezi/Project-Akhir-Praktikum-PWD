@@ -32,7 +32,7 @@ $langkah = [
 
 <body>
 
-    <!-- Navbar -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg home-navbar sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
@@ -64,7 +64,6 @@ $langkah = [
         </div>
     </nav>
 
-    <!-- Hero dengan foto latar -->
     <section class="hero-section">
         <img src="assets/img/home-page.png" class="hero-bg" alt="Donor PMI">
         <div class="hero-overlay"></div>
@@ -85,6 +84,7 @@ $langkah = [
         </div>
     </section>
 
+    <!-- statistik -->
     <div class="stats-bar">
         <div class="container">
             <div class="row text-center py-3">
@@ -108,6 +108,7 @@ $langkah = [
         </div>
     </div>
 
+    <!-- stok darah real-time -->
     <section class="stok-section py-5" id="stok">
         <div class="container">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-4">
@@ -121,13 +122,13 @@ $langkah = [
                 </a>
             </div>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
                 <?php foreach ($stok as $s): ?>
                     <?php
                     $st = statusStok((int) $s['jumlah_kantong'], (int) $s['batas_kritis']);
 
-                    // Rumus progress: stok sekarang / target tampilan x 100%.
-                    // Target tampilan dibuat 4x batas kritis supaya bar tidak cepat penuh.
+                    // rumus progress: stok sekarang / target tampilan x 100%
+                    // target tampilan dibuat 4x batas kritis supaya bar tidak cepat penuh
                     $percent = min(100, (int) round($s['jumlah_kantong'] / max(1, $s['batas_kritis'] * 4) * 100));
                     ?>
                     <div class="col">
@@ -162,6 +163,7 @@ $langkah = [
         </div>
     </section>
 
+    <!-- manfaat donor -->
     <section class="manfaat-section py-5" id="manfaat">
         <div class="container">
             <div class="text-center mb-4">
@@ -206,6 +208,7 @@ $langkah = [
         </div>
     </section>
 
+    <!-- syarat donor -->
     <section class="py-5" id="syarat">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -245,7 +248,7 @@ $langkah = [
         </div>
     </section>
 
-    <!-- Langkah-langkah donor — pakai perulangan array -->
+    <!-- langkah-langkah donor -->
     <section class="py-5" id="langkah" style="background:#F8F7F5">
         <div class="container">
             <div class="text-center mb-5">
@@ -257,7 +260,7 @@ $langkah = [
                 <?php foreach ($langkah as $i => $l): ?>
                     <div class="col-md-4">
                         <div class="h-100 p-4 rounded-4 border bg-white" style="position:relative">
-                            <!-- Nomor langkah -->
+                            <!-- nomor langkah -->
                             <div class="langkah-no"><?= $i + 1 ?></div>
                             <div class="langkah-icon mb-3">
                                 <i class="bi <?= $l['icon'] ?> text-pmi"></i>
@@ -280,7 +283,7 @@ $langkah = [
         </div>
     </section>
 
-    <!-- Lokasi dengan peta embed -->
+    <!-- lokasi dengan peta embed -->
     <section class="py-5" id="lokasi">
         <div class="container">
             <div class="text-center mb-4">
@@ -348,7 +351,7 @@ $langkah = [
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- footer -->
     <footer class="site-footer py-4">
         <div class="container d-flex justify-content-center align-items-center flex-wrap gap-2">
             <small style="color:rgba(255,255,255,.3)">© <?= date('Y') ?> PMI Kabupaten Sleman</small>
