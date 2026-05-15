@@ -93,7 +93,7 @@ if (!$diblokir && $_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-         <?php if ($diblokir): ?>
+        <?php if ($diblokir): ?>
             <div class="card border-0 shadow-sm text-center">
                 <div class="card-body p-4">
                     <div class="blocked-icon mx-auto mb-3"><i class="bi bi-shield-x"></i></div>
