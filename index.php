@@ -318,7 +318,7 @@ $langkah = [
                         <div class="lokasi-icon-box"><i class="bi bi-telephone-fill"></i></div>
                         <div>
                             <div class="fw-semibold small mb-1">Telepon & WhatsApp</div>
-                            <div class="text-muted small">(0274) 869909 · WA: 0838-4622-6162-2734-5678</div>
+                            <div class="text-muted small">(0274) 869909 · WA: 0838-4622-6162</div>
                         </div>
                     </div>
                     <div class="lokasi-info-card flex-column align-items-start">
